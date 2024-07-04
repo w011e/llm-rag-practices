@@ -35,3 +35,10 @@ allow direnv to run
 ```sh
 direnv allow
 ```
+
+## Retrieving documents for a query 
+Use a [pre-built search engine](https://github.com/alexeygrigorev/build-your-own-search-engine) and get [raw minsearch.py](https://raw.githubusercontent.com/alexeygrigorev/minsearch/main/minsearch.py)
+
+Follow rag_intro.ipynb for further woorkflow. 
+
+## Generating answers with OpenAI API 
