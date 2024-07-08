@@ -37,7 +37,7 @@ direnv allow
 ```
 
 ## Retrieving documents for a query 
-Use a [pre-built search engine "minsearch"](https://github.com/alexeygrigorev/build-your-own-search-engine) and get [raw minsearch.py](https://raw.githubusercontent.com/alexeygrigorev/minsearch/main/minsearch.py)
+Use a [self-built search engine "minsearch"](https://github.com/alexeygrigorev/build-your-own-search-engine) and get [raw minsearch.py](https://raw.githubusercontent.com/alexeygrigorev/minsearch/main/minsearch.py)
 
 Follow rag_intro.ipynb for further workflow. 
 
@@ -45,7 +45,7 @@ Follow rag_intro.ipynb for further workflow.
 
 Follow rag_intro.ipynb for further workflow. Cf. cleaned pipeline at the end of notebook. 
 
-## Replace pre-built minsearch with Elasticsearch
+## Replace self-built minsearch with Elasticsearch
 Run ElasticSearch with Docker to index the documents. 
 ```sh
 docker run -it \
