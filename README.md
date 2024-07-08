@@ -37,8 +37,54 @@ direnv allow
 ```
 
 ## Retrieving documents for a query 
-Use a [pre-built search engine](https://github.com/alexeygrigorev/build-your-own-search-engine) and get [raw minsearch.py](https://raw.githubusercontent.com/alexeygrigorev/minsearch/main/minsearch.py)
+Use a [pre-built search engine "minsearch"](https://github.com/alexeygrigorev/build-your-own-search-engine) and get [raw minsearch.py](https://raw.githubusercontent.com/alexeygrigorev/minsearch/main/minsearch.py)
 
-Follow rag_intro.ipynb for further woorkflow. 
+Follow rag_intro.ipynb for further workflow. 
 
 ## Generating answers with OpenAI API 
+
+Follow rag_intro.ipynb for further workflow. Cf. cleaned pipeline at the end of notebook. 
+
+## Replace pre-built minsearch with Elasticsearch
+Run ElasticSearch with Docker to index the documents. 
+```sh
+docker run -it \
+    --rm \
+    --name elasticsearch \
+    -p 9200:9200 \
+    -p 9300:9300 \
+    -e "discovery.type=single-node" \
+    -e "xpack.security.enabled=false" \
+    docker.elastic.co/elasticsearch/elasticsearch:8.4.3
+```
+If the previous command doesn't work (i.e. you see "error pulling image configuration"), try to run ElasticSearch directly from Docker Hub:
+```sh
+docker run -it \
+    --rm \
+    --name elasticsearch \
+    -p 9200:9200 \
+    -p 9300:9300 \
+    -e "discovery.type=single-node" \
+    -e "xpack.security.enabled=false" \
+    elasticsearch:8.4.3
+```
+
+If you get "Elasticsearch has quit unexpectedly", give it more RAM:
+```sh
+docker run -it \
+    --rm \
+    --name elasticsearch \
+    -m 2G \
+    -p 9200:9200 \
+    -p 9300:9300 \
+    -e "discovery.type=single-node" \
+    -e "xpack.security.enabled=false" \
+    docker.elastic.co/elasticsearch/elasticsearch:8.4.3
+```
+
+In a new terminal window, check that service is running 
+```sh
+curl http://localhost:9200
+```
+
+Once docker is running, follow simple_rag_flow_minsearch.ipynb for further workflow.

@@ -3,7 +3,7 @@
     "course": "data-engineering-zoomcamp",
     "documents": [
       {
-        "text": "The purpose of this document is to capture frequently asked technical questions\nThe exact day and hour of the course will be 15th Jan 2024 at 17h00. The course will start with the first  \u201cOffice Hours'' live.\nSubscribe to course public Google Calendar (it works from Desktop only).\nRegister before the course starts using this link.\nJoin the course Telegram channel with announcements.\nDon\u2019t forget to register in DataTalks.Club's Slack and join the channel.",
+        "text": "12q`\tThe purpose of this document is to capture frequently asked technical questions\nThe exact day and hour of the course will be 15th Jan 2024 at 17h00. The course will start with the first  \u201cOffice Hours'' live.\nSubscribe to course public Google Calendar (it works from Desktop only).\nRegister before the course starts using this link.\nJoin the course Telegram channel with announcements.\nDon\u2019t forget to register in DataTalks.Club's Slack and join the channel.",
         "section": "General course-related questions",
         "question": "Course - When will the course start?"
       },
@@ -130,10 +130,10 @@
       {
         "text": "For uniformity at least, but you\u2019re not restricted to GCP, you can use other cloud platforms like AWS if you\u2019re comfortable with other cloud platforms, since you get every service that\u2019s been provided by GCP in Azure and AWS or others..\nBecause everyone has a google account, GCP has a free trial period and gives $300 in credits  to new users. Also, we are working with BigQuery, which is a part of GCP.\nNote that to sign up for a free GCP account, you must have a valid credit card.",
         "section": "General course-related questions",
-        "question": "Environment - Why are we using GCP and not other cloud providers?"
+        "question": "Environment - Why are we using GCP and not other cloud providers?GCP"
       },
       {
-        "text": "No, if you use GCP and take advantage of their free trial.",
+        "text": "No, if you use and take advantage of their free trial.",
         "section": "General course-related questions",
         "question": "Should I pay for cloud services?"
       },
@@ -5109,8 +5109,13 @@
       },
       {
         "text": "Answer: Boto3 does not support underscores (_) in service URLs. Naming your Docker Compose services with underscores will cause Boto3 to throw an error when connecting to the endpoint. (Source: https://github.com/boto/boto3/issues/703)\n# Incorrect Docker Compose configuration with underscores\nversion: '3.8'\nservices:\nbackend_service:\nimage: my_backend_image\n...\ns3_service:\nimage: localstack/localstack\n\u2026\nRename your services to avoid using underscores. s3_service \u2192 s3service\nThat way, when you run client = boto3.client('s3', endpoint_url=\"http://s3service:4566\") you won\u2019t get any error.\nAdded by Fustincho\nProblem: Pre-commit fails with error RuntimeError: The Poetry configuration is invalid:\n- data.extras.pipfile_deprecated_finder[2] must match pattern ^[a-zA-Z-_.0-9]+$\nSolution: This is caused by version mixmatch between the pre-commit-config.yaml designated version for your package and the actual versions. Check the versions in Pipfile.lock and update as appropriate.\nAdded by Oluwadara Adedeji",
-        "section": "Capstone Project",
+        "section": "Module 6: Best practices",
         "question": "Why do I get a ValueError: Invalid endpoint error when using Boto3 with Docker Compose services?"
+      },
+      {
+        "text": "Solution: Follow the tip: When you compare two Pandas DataFrames, the result is also a DataFrame. The same is true for Pandas Series. Also, a DataFrame could be turned into a list of dictionaries.\nTherefore, do not compare data frames directly, but convert the actual and expected dataframes into list of dictionaries and then use assert to compare the resulting list of dictionaries.\nFor example:\n\u2026\nactual_df_list_dicts = actual_df.to_dict('records')\n\u2026\nexpected_df_list_dicts = expected_df.to_dict('records')\n\u2026\nassert actual_df_list_dicts == expected_df_list_dicts\nAdded by Victor Emenike",
+        "section": "Capstone Project",
+        "question": "Why do I get a \u201cValueError: The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all()\u201d error when doing unit test that involves comparing two data frames?"
       },
       {
         "text": "No, the capstone is a solo project.",
