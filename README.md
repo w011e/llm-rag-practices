@@ -102,3 +102,43 @@ __Where to find and how to select models?__
 The easiest way to run an LLM without a GPU is using [Ollama](https://github.com/ollama/ollama)
 
 In order to run Ollama locally, we need a powerful machine. If you're using Codespaces, start a new codespace with options and set machine type to 4 cores. 
+
+Install Ollama on local machine (or new Codespace)
+```sh
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+Start Ollama server
+```sh
+ollama start
+```
+
+Ollama supports a list of models available on [ollama.com/library](https://ollama.com/library). Note: You should have at least 8 GB of RAM available to run the 7B models, 16 GB to run the 13B models, and 32 GB to run the 33B models.
+
+In new terminal window, pull model to run it locally without GPU. Note: We use Microsoft's Phi 3 Mini with 3.8B parameters and size of 2.3GB.
+```sh
+ollama pull phi3
+```
+
+Run model in terminal and start playing 
+```sh
+ollama run phi3
+```
+
+__Use Ollama as drop-in replacement for OpenAI API__
+Follow [ollama.ipynb notebook](notebooks/ollama.ipynb). If using Codespaces, you have to run to machine with full environment dependencies installed, thus you have to install cf. above. 
+
+__Running Ollama with Docker__
+```sh
+docker run -it \
+    -v ollama:/root/.ollama \
+    -p 11434:11434 \
+    --name ollama \
+    ollama/ollama
+```
+
+Pulling the model
+```sh
+docker exec -it ollama bash
+ollama pull phi3
+```
