@@ -92,4 +92,4 @@ Once docker is running, follow simple_rag_flow_minsearch.ipynb for further workf
 There are notebooks to implement models hosted on HuggingFace:
 * [Google's FLAN T5](https://huggingface.co/google/flan-t5-base)
 * [Microsoft's Phi 3 Mini](https://huggingface.co/microsoft/Phi-3-mini-128k-instruct)
-* [Mistral's 7B](https://huggingface.co/mistralai/Mistral-7B-v0.1)
+* [Mistral's 7B Instruct](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1), a Mistral base model is also used in [HuggingFace's LLM tutorial](https://huggingface.co/docs/transformers/en/llm_tutorial). Note, a token is needed to use the model. Generate the token inside HuggingFace and add it as Colab Secret. 
