@@ -87,3 +87,8 @@ In a new terminal window, check that service is running
 curl http://localhost:9200
 ```
 Once docker is running, follow simple_rag_flow_minsearch.ipynb for further workflow.
+
+# Use Open Source LLMs in Pipeline 
+There are notebooks to implement models hosted on HuggingFace:
+* [Google's FLAN T5](https://huggingface.co/google/flan-t5-base)
+* [Microsoft's Phi 3 Mini](https://huggingface.co/microsoft/Phi-3-mini-128k-instruct)
