@@ -1,6 +1,6 @@
-## Prepare the environment 
+# Prepare the environment 
 
-__Codespace, packes, environments__
+__Codespace, packages, environments__
 - Open a codespace, then download and install Miniconda 
 - Make sure to cd .. to be in @username -> /workspaces/ directory 
 ```sh
@@ -36,16 +36,16 @@ allow direnv to run
 direnv allow
 ```
 
-## Retrieving documents for a query 
+# Retrieving documents for a query 
 Use a [self-built search engine "minsearch"](https://github.com/alexeygrigorev/build-your-own-search-engine) and get [raw minsearch.py](https://raw.githubusercontent.com/alexeygrigorev/minsearch/main/minsearch.py)
 
 Follow rag_intro.ipynb for further workflow. 
 
-## Generating answers with OpenAI API 
+# Generating answers with OpenAI API 
 
 Follow rag_intro.ipynb for further workflow. Cf. cleaned pipeline at the end of notebook. 
 
-## Replace self-built minsearch with Elasticsearch
+# Replace self-built minsearch with Elasticsearch
 Run ElasticSearch with Docker to index the documents. 
 ```sh
 docker run -it \
@@ -86,5 +86,4 @@ In a new terminal window, check that service is running
 ```sh
 curl http://localhost:9200
 ```
-
 Once docker is running, follow simple_rag_flow_minsearch.ipynb for further workflow.

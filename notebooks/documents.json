@@ -3,7 +3,7 @@
     "course": "data-engineering-zoomcamp",
     "documents": [
       {
-        "text": "12q`\tThe purpose of this document is to capture frequently asked technical questions\nThe exact day and hour of the course will be 15th Jan 2024 at 17h00. The course will start with the first  \u201cOffice Hours'' live.\nSubscribe to course public Google Calendar (it works from Desktop only).\nRegister before the course starts using this link.\nJoin the course Telegram channel with announcements.\nDon\u2019t forget to register in DataTalks.Club's Slack and join the channel.",
+        "text": "The purpose of this document is to capture frequently asked technical questions\nThe exact day and hour of the course will be 15th Jan 2024 at 17h00. The course will start with the first  \u201cOffice Hours'' live.\nSubscribe to course public Google Calendar (it works from Desktop only).\nRegister before the course starts using this link.\nJoin the course Telegram channel with announcements.\nDon\u2019t forget to register in DataTalks.Club's Slack and join the channel.",
         "section": "General course-related questions",
         "question": "Course - When will the course start?"
       },
@@ -5086,6 +5086,11 @@
         "text": "Problem description\nWhen a docker-compose file contains a lot of containers, running the containers may take too much resource. There is a need to easily select only a group of containers while ignoring irrelevant containers during testing.\nSolution description\nAdd profiles: [\u201cprofile_name\u201d] in the service definition.\nWhen starting up the service, add `--profile profile_name` in the command.\nAdded by Ammar Chalifah",
         "section": "Module 6: Best practices",
         "question": "Managing Multiple Docker Containers with docker-compose profile"
+      },
+      {
+        "text": "If you encounter such messages when you try to list your aws s3 buckets for example (aws --endpoint-url=http://localhost:4566 s3 ls), you can try to configure AWS by setting up the same region, access key and secret key as the ones that appear in your docker-compose file.\nAfter installing the aws cli, make sure you configure it in your terminal by entering this command line : aws configure\nIt will ask for:\nAWS Access Key ID [None]: abc (example)\nAWS Secret Access Key [None]: xyz (example)\nDefault region name [None]: eu-west-1 (example)\nAdded by M\u00e9lanie Fouesnard",
+        "section": "Module 6: Best practices",
+        "question": "Why do aws cli commands throw <botocore.awsrequest.AWSRequest object at 0x74c89c3562d0> type messages when listing or creating aws s3 buckets with localstack ?"
       },
       {
         "text": "Problem description\nIf you are having problems with the integration tests and kinesis double check that your aws regions match on the docker-compose and local config. Otherwise you will be creating a stream in the wrong region\nSolution description\nFor example set ~/.aws/config region = us-east-1 and the docker-compose.yaml - AWS_DEFAULT_REGION=us-east-1\nAdded by Quinn Avila",
