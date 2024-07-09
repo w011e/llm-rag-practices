@@ -92,3 +92,4 @@ Once docker is running, follow simple_rag_flow_minsearch.ipynb for further workf
 There are notebooks to implement models hosted on HuggingFace:
 * [Google's FLAN T5](https://huggingface.co/google/flan-t5-base)
 * [Microsoft's Phi 3 Mini](https://huggingface.co/microsoft/Phi-3-mini-128k-instruct)
+* [Microsoft's Phi 3 Mini](https://huggingface.co/mistralai/Mistral-7B-v0.1)
