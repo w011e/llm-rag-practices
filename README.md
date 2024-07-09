@@ -100,4 +100,5 @@ __Where to find and how to select models?__
 
 # Run Ollama locally on CPU
 The easiest way to run an LLM without a GPU is using [Ollama](https://github.com/ollama/ollama)
-Notebook ollama.ipynb
+
+In order to run Ollama locally, we need a powerful machine. If you're using Codespaces, start a new codespace with options and set machine type to 4 cores. 
