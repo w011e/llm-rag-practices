@@ -127,7 +127,7 @@ ollama run phi3
 
 __Use Ollama as drop-in replacement for OpenAI API__
 
-Follow [ollama.ipynb notebook](notebooks/ollama.ipynb). If using Codespaces, you have to run to machine with full environment dependencies installed, thus you have to install cf. above. 
+Follow [ollama.ipynb notebook](notebooks/ollama_minsearch.ipynb). Make sure to have dependencies installed, cf. above. 
 
 __Running Ollama with Docker__
 
