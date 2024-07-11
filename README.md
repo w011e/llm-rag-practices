@@ -144,3 +144,43 @@ Pulling the model
 docker exec -it ollama bash
 ollama pull phi3
 ```
+
+# Ollama + Phi 3 + ElasticSearch in Docker Compose 
+
+Create [Docker Compose YAML](docker-compose.yaml) file 
+
+Run (be sure to be in the same dir as yaml file)
+```sh
+docker-compose up -d
+docker ps # verify containers are running 
+curl http://localhost:9200 # verify elasticsearch, get a JSON response with Elasticsearch cluster 
+curl http://localhost:11434 # verify and get "Ollama is running"
+```
+
+Verify that container is running 
+```sh
+docker ps
+```
+
+If not done already, enter Ollama container and download model
+```sh
+docker exec -it ollama bash
+ollama pull phi3:mini 
+ollama run phi3:mini # to verify and interact with model 
+ollama /bye # to stop model 
+```
+
+Open Jupyter 
+```sh
+jupyter notebook --ip=0.0.0.0 --no-browser --allow-root
+```
+
+You might need to remove Unused Docker Images and Containers
+```sh
+docker system prune -a
+```
+
+To run Ollama with Phi 3 in Docker, follow [this notebook](notebooks/ollama_elasticsearch_docker.ipynb).
+
+# Implement RAG Pipeline with Streamlit UI 
+
