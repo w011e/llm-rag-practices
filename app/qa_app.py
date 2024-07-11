@@ -1,6 +1,6 @@
 import os
-import requests
 import time
+import requests
 import streamlit as st
 from elasticsearch import Elasticsearch
 from openai import OpenAI
@@ -37,7 +37,7 @@ index_settings = {
 
 def setup_elasticsearch_index():
     # Retry logic to wait for Elasticsearch to be ready
-    retries = 5
+    retries = 10
     for i in range(retries):
         try:
             if es_client.ping():
@@ -158,7 +158,18 @@ def main():
 
 if __name__ == "__main__":
     # Setup Elasticsearch index and load documents
-    setup_elasticsearch_index()
-    time.sleep(10)  # Adding delay to ensure Elasticsearch index is created
-    load_and_index_documents()
+    print("Starting Elasticsearch setup...")
+    try:
+        setup_elasticsearch_index()
+        print("Elasticsearch setup completed.")
+    except Exception as e:
+        print(f"Elasticsearch setup failed: {e}")
+    
+    print("Loading and indexing documents...")
+    try:
+        load_and_index_documents()
+        print("Document indexing completed.")
+    except Exception as e:
+        print(f"Document indexing failed: {e}")
+
     main()
