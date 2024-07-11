@@ -184,3 +184,23 @@ To run Ollama with Phi 3 in Docker, follow [this notebook](notebooks/ollama_elas
 
 # Implement RAG Pipeline with Streamlit UI 
 
+Make sure docker-compose.yaml file is configured correctly and services are running. Note there is a different yaml for the app inside app folder 
+```sh
+docker-compose up -d
+```
+
+Run Streamlit. Navigate to your app directory and start the Streamlit server.
+```sh
+cd /workspaces/llm-zoomcamp/app
+streamlit run qa_app.py
+```
+
+Forward the port in Codespaces and access your Streamlit app through the provided URL. In VSC, open the Ports view, "Add Port", enter port number that Streamlit app is running on, which is typically 8501, "Forward Port" button. Open Network URL in your browser.  
+
+In case you need to rebuild
+```sh
+docker-compose down
+docker-compose up --build
+```
+
+

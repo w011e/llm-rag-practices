@@ -1,0 +1,4 @@
+streamlit
+elasticsearch
+requests
+openai
