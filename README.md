@@ -1,6 +1,8 @@
-# Prepare the environment 
+This repository contains notes and results from coding along with [DataTalksClub's LLM Zoomcamp.](https://github.com/DataTalksClub/llm-zoomcamp) It provides instructions and workflows for setting up and using various tools and models in the context of Language Models.
 
-__Codespace, packages, environments__
+# 1. Prepare the environment 
+
+## 1.1 Set Up Codespace and Miniconda
 - Open a codespace, then download and install Miniconda 
 - Make sure to cd .. to be in @username -> /workspaces/ directory 
 ```sh
@@ -13,7 +15,7 @@ bash Miniconda3-py310_24.5.0-0-Linux-x86_64.sh
 conda install tqdm jupyter openai elasticsearch pandas scikit-learn ipywidgets
 ```
 
-__API Keys__
+## 1.2 Manage API Keys
 For managing keys is using direnv
 ```sh
 sudo apt update
@@ -36,16 +38,16 @@ allow direnv to run
 direnv allow
 ```
 
-# Retrieving documents for a query 
+# 2 Simple search 
+
+## 2.1 Simple search using self-built MinSearch
+Retrieving documents for a query 
 Use a [self-built search engine "minsearch"](https://github.com/alexeygrigorev/build-your-own-search-engine) and get [raw minsearch.py](https://raw.githubusercontent.com/alexeygrigorev/minsearch/main/minsearch.py). 
 
-Follow [simple_rag_flow_self_built_search_engine.ipynb notebook](notebooks/simple_rag_flow_self_built_search_engine.ipynb) for further workflow. 
+Follow [simple_rag_flow_self_built_search_engine.ipynb notebook](notebooks/simple_rag_flow_self_built_search_engine.ipynb) for further workflow. To generate answers with OpenAI API, cf. cleaned pipeline at the end of notebook. 
 
-# Generating answers with OpenAI API 
+## 2.2 Simple search using Elasticsearch
 
-Follow [simple_rag_flow_self_built_search_engine.ipynb notebook](notebooks/simple_rag_flow_self_built_search_engine.ipynb) for further workflow. Cf. cleaned pipeline at the end of notebook. 
-
-# Replace self-built minsearch with Elasticsearch
 Run ElasticSearch with Docker to index the documents. 
 ```sh
 docker run -it \
@@ -88,16 +90,9 @@ curl http://localhost:9200
 ```
 Once docker is running, follow [simple_rag_flow_elasticsearch.ipynb notebook](notebooks/simple_rag_flow_elasticsearch.ipynb) for further workflow.
 
-# Use Open Source LLMs in Pipeline 
-There are notebooks to implement models hosted on HuggingFace:
-* [Google's FLAN T5](https://huggingface.co/google/flan-t5-base), use [huggingface_flan_t5.ipynb notebook](notebooks/huggingface_flan_t5.ipynb)
-* [Microsoft's Phi 3 Mini](https://huggingface.co/microsoft/Phi-3-mini-128k-instruct), use [huggingface_phi_3_mini.ipynb notebook](notebooks/huggingface_phi_3_mini.ipynb)
-* [Mistral's 7B Instruct](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1), use [huggingface_mistral_7b_instruct.ipynb notebook](notebooks/huggingface_mistral_7b_instruct.ipynb). One of the Mistral 7B base models is also used in [HuggingFace's LLM tutorial](https://huggingface.co/docs/transformers/en/llm_tutorial). Note, a token is needed to use the model. Generate the token inside HuggingFace and add it as Colab Secret. 
+# 3. Use open LLMs for RAG
 
-__Where to find and how to select models?__
-* [HuggingFace Open LLM Leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard)
-* [HuggingFace LLM Performance Leaderboard](https://huggingface.co/spaces/optimum/llm-perf-leaderboard)
-
+## 3.1 Running LLMs Locally
 # Run Ollama locally on CPU
 The easiest way to run an LLM without a GPU is using [Ollama](https://github.com/ollama/ollama)
 
@@ -126,26 +121,20 @@ ollama run phi3
 ```
 
 __Use Ollama as drop-in replacement for OpenAI API__
-
 Follow [ollama.ipynb notebook](notebooks/ollama_minsearch.ipynb). Make sure to have dependencies installed, cf. above. 
 
-__Running Ollama with Docker__
+__Where to find and how to select models?__
+* [HuggingFace Open LLM Leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard)
+* [HuggingFace LLM Performance Leaderboard](https://huggingface.co/spaces/optimum/llm-perf-leaderboard)
 
-```sh
-docker run -it \
-    -v ollama:/root/.ollama \
-    -p 11434:11434 \
-    --name ollama \
-    ollama/ollama
-```
+## 3.2 Integrate LLMs with Elasticsearch
+There are notebooks to implement models hosted on HuggingFace:
+* [Google's FLAN T5](https://huggingface.co/google/flan-t5-base), use [huggingface_flan_t5.ipynb notebook](notebooks/huggingface_flan_t5.ipynb)
+* [Microsoft's Phi 3 Mini](https://huggingface.co/microsoft/Phi-3-mini-128k-instruct), use [huggingface_phi_3_mini.ipynb notebook](notebooks/huggingface_phi_3_mini.ipynb)
+* [Mistral's 7B Instruct](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1), use [huggingface_mistral_7b_instruct.ipynb notebook](notebooks/huggingface_mistral_7b_instruct.ipynb). One of the Mistral 7B base models is also used in [HuggingFace's LLM tutorial](https://huggingface.co/docs/transformers/en/llm_tutorial). Note, a token is needed to use the model. Generate the token inside HuggingFace and add it as Colab Secret. 
 
-Pulling the model
-```sh
-docker exec -it ollama bash
-ollama pull phi3
-```
 
-# Ollama + Phi 3 + ElasticSearch in Docker Compose 
+## 3.3 Ollama + Phi 3 + ElasticSearch in Docker Compose 
 
 Create [Docker Compose YAML](docker-compose.yaml) file 
 
@@ -182,7 +171,7 @@ docker system prune -a
 
 To run Ollama with Phi 3 in Docker, follow [this notebook](notebooks/ollama_elasticsearch_docker.ipynb).
 
-# Implement RAG Pipeline with Streamlit UI 
+## 3.4 Implement RAG Pipeline with Streamlit UI 
 
 Make sure docker-compose.yaml file is configured correctly and services are running. Note there is a different yaml for the app inside app folder 
 ```sh
