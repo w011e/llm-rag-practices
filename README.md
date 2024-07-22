@@ -1,4 +1,4 @@
-This repository contains notes and results from coding along with [DataTalksClub's LLM Zoomcamp.](https://github.com/DataTalksClub/llm-zoomcamp) It provides instructions and workflows for setting up and using various tools and models in the context of Language Models.
+This repository contains notes and results from coding along with [DataTalksClub's LLM Zoomcamp.](https://github.com/DataTalksClub/llm-zoomcamp) It provides instructions and workflows for setting up and using various tools and models in the context of Large Language Models.
 
 # 1. Prepare the environment 
 
@@ -93,7 +93,6 @@ Once docker is running, follow [simple_rag_flow_elasticsearch.ipynb notebook](no
 # 3. Use open LLMs for RAG
 
 ## 3.1 Running LLMs Locally
-# Run Ollama locally on CPU
 The easiest way to run an LLM without a GPU is using [Ollama](https://github.com/ollama/ollama)
 
 In order to run Ollama locally, we need a powerful machine. If you're using Codespaces, start a new codespace with options and set machine type to 4 cores. 
