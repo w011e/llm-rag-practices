@@ -59,17 +59,6 @@ docker run -it \
     -e "xpack.security.enabled=false" \
     docker.elastic.co/elasticsearch/elasticsearch:8.4.3
 ```
-If the previous command doesn't work (i.e. you see "error pulling image configuration"), try to run ElasticSearch directly from Docker Hub:
-```sh
-docker run -it \
-    --rm \
-    --name elasticsearch \
-    -p 9200:9200 \
-    -p 9300:9300 \
-    -e "discovery.type=single-node" \
-    -e "xpack.security.enabled=false" \
-    elasticsearch:8.4.3
-```
 
 If you get "Elasticsearch has quit unexpectedly", give it more RAM:
 ```sh
@@ -183,12 +172,28 @@ cd /workspaces/llm-zoomcamp/app
 streamlit run qa_app.py
 ```
 
-Forward the port in Codespaces and access your Streamlit app through the provided URL. In VSC, open the Ports view, "Add Port", enter port number that Streamlit app is running on, which is typically 8501, "Forward Port" button. Open Network URL in your browser.  
-
 In case you need to rebuild
 ```sh
 docker-compose down
 docker-compose up --build
 ```
 
+# 4. Vector DBs
 
+## 4.1 Build semantic search engine using ElasticSearch 
+
+To work with ElasticSearch, data must be organised into documents. Thus, documents.json will be used to create embeddings with a pre-trained model from HuggingFace. These embeddings will be eventually pushed into ElasticSearch index. 
+
+Run ElasticSearch with previously used Docker container
+```sh
+docker run -it \
+    --rm \
+    --name elasticsearch \
+    -p 9200:9200 \
+    -p 9300:9300 \
+    -e "discovery.type=single-node" \
+    -e "xpack.security.enabled=false" \
+    docker.elastic.co/elasticsearch/elasticsearch:8.4.3
+```
+
+For further workflow,, follow [this notebook](notebooks/demo_es.ipynb).
