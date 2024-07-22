@@ -1,5 +1,3 @@
-# version: '3.8'
-
 services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
@@ -10,8 +8,6 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
-    networks:
-      - app-net
 
   ollama:
     image: ollama/ollama
@@ -20,24 +16,6 @@ services:
       - ollama:/root/.ollama
     ports:
       - "11434:11434"
-    networks:
-      - app-net
-
-  app:
-    build: .
-    container_name: app
-    depends_on:
-      - elasticsearch
-      - ollama
-    ports:
-      - "8501:8501"
-    networks:
-      - app-net
-    environment:
-      - ELASTICSEARCH_HOST=elasticsearch
-
-networks:
-  app-net:
 
 volumes:
   ollama:

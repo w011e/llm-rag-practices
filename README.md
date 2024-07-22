@@ -165,9 +165,9 @@ docker ps
 If not done already, enter Ollama container and download model
 ```sh
 docker exec -it ollama bash
-ollama pull phi3:mini 
-ollama run phi3:mini # to verify and interact with model 
-ollama /bye # to stop model 
+ollama pull phi3
+ollama run phi3     # to verify and interact with model 
+ollama /bye         # to stop model 
 ```
 
 Open Jupyter 
