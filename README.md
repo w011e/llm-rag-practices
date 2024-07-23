@@ -186,14 +186,15 @@ To work with ElasticSearch, data must be organised into documents. Thus, documen
 
 Run ElasticSearch with previously used Docker container
 ```sh
-docker run -it \
+docker run -itd \
     --rm \
     --name elasticsearch \
     -p 9200:9200 \
     -p 9300:9300 \
     -e "discovery.type=single-node" \
     -e "xpack.security.enabled=false" \
-    docker.elastic.co/elasticsearch/elasticsearch:8.4.3
+    docker.elastic.co/elasticsearch/elasticsearch:8.8.0 
+    # docker.elastic.co/elasticsearch/elasticsearch:8.4.3 make sure you run your version 
 ```
 
 For further workflow,, follow [this notebook](notebooks/demo_es.ipynb).
