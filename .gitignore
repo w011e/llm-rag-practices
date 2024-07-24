@@ -163,3 +163,4 @@ cython_debug/
 
 # do not push keys etc
 .envrc
+.env
