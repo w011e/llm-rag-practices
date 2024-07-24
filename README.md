@@ -197,4 +197,9 @@ docker run -itd \
     # docker.elastic.co/elasticsearch/elasticsearch:8.4.3 make sure you run your version 
 ```
 
-For further workflow,, follow [this notebook](notebooks/demo_es.ipynb).
+For further workflow, follow [this notebook](notebooks/evaluate_retrieval/elasticsearch_demo.ipynb).
+
+## 4.2 Evaluate retrieval 
+
+In order to evaluate the retrieval on specific metrics, we need to create a "ground truth" dataset with an LLM. gpt-4o-mini was used for this, follow [this notebook](notebooks/evaluate_retrieval/generate_ground_truth_data.ipynb) for further info.
+
