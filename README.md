@@ -217,3 +217,9 @@ Mean Reciprocal Rank (MRR): How soon the first relevant item appears in the resu
 __Evaluating the Search Results__
 
 Follow [this notebook to evaluate text retrieval.](notebooks/evaluate_retrieval/evaluate_text_retrieval_techniques_for_rag.ipynb). [This notebook](evaluate_vector_retrieval_techniques_for_rag.ipynb) is another guide to evaluating retrieval methods, comparing text results and vector search. We use sentence embeddings of different fields and see which one performs better.
+
+# 5. Evaluation and Monitoring 
+
+How to evaluate and monitor LLM and RAG systems?
+
+The evaluation part assesses the quality of the entire RAG system before it goes live. The monitoring part collects, stores and visualizes metrics to assess the answer quality of a deployed LLM. Also, there are options to collect chat history and user feedback.
