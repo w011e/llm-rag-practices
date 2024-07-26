@@ -201,22 +201,20 @@ For further workflow, follow [this notebook](notebooks/evaluate_retrieval/elasti
 
 ## 4.2 Evaluate retrieval 
 
+Use generated sample questions to test and validate how well ElasticSearch setup retrieves relevant documents. This process helps to fine-tune the search engine, ensuring it performs accurately and effectively.
+
 __Why Do We Need Evaluation?__
 Purpose: To assess how well the search engine retrieves relevant documents.
 Goal: Improve accuracy and relevance of search results.
 
 __Ground Truth / "Gold Standard" Data__
-In order to evaluate the retrieval on specific metrics, we need to create a "ground truth" dataset with an LLM. This data is a set of manually labeled relevant documents which are used as a reference. It ednsures the evaluation reflects true relevance. To generate such data, gpt-4o-mini was used for this though' follow [this notebook](notebooks/evaluate_retrieval/generate_ground_truth_data.ipynb) for further info.
-
+In order to evaluate the retrieval on specific metrics, we need to create a "ground truth" dataset with an LLM. This data is a set of manually labeled relevant documents which are used as a reference. It ensures the evaluation reflects true relevance. To generate such data, gpt-4o-mini was used for this though' follow [this notebook](notebooks/evaluate_retrieval/generate_ground_truth_data.ipynb) for further info. Overall, the "ground truth" data can be used for training and testing search algorithms, evaluating how well your search engine retrieves relevant documents based on sample queries.
 
 __Evaluation Metrics__
-Precision: The fraction of relevant documents retrieved.
-
-Recall: The fraction of relevant documents that were retrieved out of all relevant documents.
-
-F1 Score: The harmonic mean of precision and recall, balancing both metrics.
+Hit-Rate (Recall): How many of the relevant items are retrieved; high recall means more relevant items are found
+Mean Reciprocal Rank (MRR): How soon the first relevant item appears in the results; higher MRR means relevant items appear earlier in the results
 
 __Evaluating the Search Results__
-1. Compare search results against ground truth data.
-2. Calculate precision, recall, and F1 score.
-3. Analyze metrics to identify and address weaknesses.
+
+Follow [this notebook to evaluate text retrieval.](notebooks/evaluate_retrieval/evaluate_text_retrieval_techniques_for_rag.ipynb).
+Follow [this notebook to evaluate vector retrieval.](notebooks/evaluate_retrieval/evaluate_vector_retrieval_techniques_for_rag.ipynb).
