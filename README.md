@@ -201,5 +201,22 @@ For further workflow, follow [this notebook](notebooks/evaluate_retrieval/elasti
 
 ## 4.2 Evaluate retrieval 
 
-In order to evaluate the retrieval on specific metrics, we need to create a "ground truth" dataset with an LLM. gpt-4o-mini was used for this, follow [this notebook](notebooks/evaluate_retrieval/generate_ground_truth_data.ipynb) for further info.
+__Why Do We Need Evaluation?__
+Purpose: To assess how well the search engine retrieves relevant documents.
+Goal: Improve accuracy and relevance of search results.
 
+__Ground Truth / "Gold Standard" Data__
+In order to evaluate the retrieval on specific metrics, we need to create a "ground truth" dataset with an LLM. This data is a set of manually labeled relevant documents which are used as a reference. It ednsures the evaluation reflects true relevance. To generate such data, gpt-4o-mini was used for this though' follow [this notebook](notebooks/evaluate_retrieval/generate_ground_truth_data.ipynb) for further info.
+
+
+__Evaluation Metrics__
+Precision: The fraction of relevant documents retrieved.
+
+Recall: The fraction of relevant documents that were retrieved out of all relevant documents.
+
+F1 Score: The harmonic mean of precision and recall, balancing both metrics.
+
+__Evaluating the Search Results__
+1. Compare search results against ground truth data.
+2. Calculate precision, recall, and F1 score.
+3. Analyze metrics to identify and address weaknesses.
