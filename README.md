@@ -109,7 +109,7 @@ ollama run phi3
 ```
 
 __Use Ollama as drop-in replacement for OpenAI API__
-Follow [ollama.ipynb notebook](notebooks/ollama_minsearch.ipynb). Make sure to have dependencies installed, cf. above. 
+For integration with OpenAI API, follow the [ollama.ipynb notebook](notebooks/ollama_minsearch.ipynb). Make sure to have dependencies installed, cf. above. 
 
 __Where to find and how to select models?__
 * [HuggingFace Open LLM Leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard)
@@ -161,7 +161,7 @@ To run Ollama with Phi 3 in Docker, follow [this notebook](notebooks/ollama_elas
 
 ## 3.4 Implement RAG Pipeline with Streamlit UI 
 
-Make sure docker-compose.yaml file is configured correctly and services are running. Note there is a different yaml for the app inside app folder 
+Make sure docker-compose.yaml file is configured correctly and services are running.  
 ```sh
 docker-compose up -d
 ```
@@ -201,7 +201,7 @@ For further workflow, follow [this notebook](notebooks/evaluate_retrieval/elasti
 
 ## 4.2 Evaluate retrieval 
 
-Use generated sample questions to test and validate how well ElasticSearch setup retrieves relevant documents. This process helps to fine-tune the search engine, ensuring it performs accurately and effectively.
+Evaluate how well Elasticsearch retrieves relevant documents. This involves creating a "ground truth" dataset and assessing metrics like Hit-Rate (Recall) and Mean Reciprocal Rank (MRR). This process helps to fine-tune the search engine, ensuring it performs accurately and effectively.
 
 __Why Do We Need Evaluation?__
 Purpose: To assess how well the search engine retrieves relevant documents.
@@ -216,5 +216,4 @@ Mean Reciprocal Rank (MRR): How soon the first relevant item appears in the resu
 
 __Evaluating the Search Results__
 
-Follow [this notebook to evaluate text retrieval.](notebooks/evaluate_retrieval/evaluate_text_retrieval_techniques_for_rag.ipynb).
-Follow [this notebook to evaluate vector retrieval.](notebooks/evaluate_retrieval/evaluate_vector_retrieval_techniques_for_rag.ipynb).
+Follow [this notebook to evaluate text retrieval.](notebooks/evaluate_retrieval/evaluate_text_retrieval_techniques_for_rag.ipynb). [This notebook](evaluate_vector_retrieval_techniques_for_rag.ipynb) is another guide to evaluating retrieval methods, comparing text results and vector search. We use sentence embeddings of different fields and see which one performs better.
